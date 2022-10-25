@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "e69245f1-b2cc-40d2-852a-32a02792f860",
+		"name": "Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11182629"
+	},
+	"item": [
+		{
+			"name": "findAllTasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findTaskByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task/MainTask",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task",
+						"MainTask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findTaskById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task/id/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task",
+						"id",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeTask",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTask",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"MainTask\",\r\n    \"duration\": \"00:15:23\",\r\n    \"taskGroup\": \"Group0\",\r\n    \"assignee\": \"Sarunas\",\r\n    \"subTasks\": [\r\n        {\r\n            \"name\": \"SubTask0\",\r\n            \"finished\": true\r\n        },\r\n        {\r\n            \"name\": \"SubTask1\",\r\n            \"finished\": false\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateTask",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\":\"Camel\",\r\n \"duration\": \"00:15:23\",\r\n \"taskGroup\":\"Group0\",\r\n \"assignee\": \"cfg\",\r\n \"subTasks\": [{\r\n    \"name\":\"SubTask0\",\r\n    \"finished\": false\r\n },\r\n {\r\n    \"name\":\"SubTask1\",\r\n    \"finished\": true\r\n }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/task/id/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task",
+						"id",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
