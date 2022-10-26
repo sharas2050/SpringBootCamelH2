@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springboot.camel.h2.SpringBootCamelH2Application;
 import com.springboot.camel.h2.entity.Task;
 import org.apache.camel.*;
 import org.apache.camel.component.mock.MockEndpoint;
@@ -11,22 +12,29 @@ import org.apache.camel.test.spring.junit5.CamelSpringBootTest;
 import org.apache.camel.test.spring.junit5.MockEndpoints;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.engine.JupiterTestEngine;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
-@SpringBootTest
 @CamelSpringBootTest
 @EnableAutoConfiguration
 @MockEndpoints
-public class TaskRouteTests {
+@SpringBootTest
+public class TaskRouteTest {
 
-	private static Logger logger = LoggerFactory.getLogger(TaskRouteTests.class);
+	private static Logger logger = LoggerFactory.getLogger(TaskRouteTest.class);
 
 	@EndpointInject("mock:direct:saveTask")
 	private MockEndpoint mockSave;
@@ -74,7 +82,7 @@ public class TaskRouteTests {
 				"]";
 
 		Task[] respondValue = objectMapper.readValue(respondJson, Task[].class);
-
+		@SuppressWarnings("unchecked")
 		final List<Task> ret = producerTemplate.requestBody("direct:findAllTasks", "", java.util.List.class);
 		mockSave.assertIsSatisfied();
 		assertEquals(Arrays.toString(Arrays.stream(respondValue).toArray()),ret.toString());

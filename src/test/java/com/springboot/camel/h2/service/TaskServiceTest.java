@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TaskServiceTests {
+public class TaskServiceTest {
 
     @InjectMocks
     private TaskService service;
